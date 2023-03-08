@@ -36,6 +36,8 @@ namespace TestTask.Characters
             _instance.Warp(targetPosition);
         }
 
+        public static Vector3 GetPosition() => _instance.transform.position;
+
         private void NotifyPlayerDeath()
         {
             OnPlayerDeath?.Invoke();

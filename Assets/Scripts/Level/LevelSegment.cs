@@ -23,6 +23,7 @@ namespace TestTask.Level
                 enemy.OnDeath += OnEnemyDeath;
             }
             _remainingEnemies = enemies.Length;
+            CheckSegmentCleared();
         }
 
         void OnEnemyDeath()
