@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TestTask.Level;
+using TestTask.Characters.Interactive;
 using UnityEngine;
 
 namespace TestTask.Characters
@@ -9,7 +11,7 @@ namespace TestTask.Characters
     {
         static Player _instance;
 
-        public static event Action OnPlayerDeath;
+        public static event Action OnPlayerDied;
 
 
         override protected void Awake()
@@ -26,6 +28,11 @@ namespace TestTask.Characters
             }
         }
 
+        protected override void OnWaypointTouch(Waypoint other)
+        {
+            other.EnterWaypoint(this);
+        }
+
         public static void OrderMovement(Vector3 targetPosition)
         {
             _instance.StartMoving(targetPosition);
@@ -36,11 +43,18 @@ namespace TestTask.Characters
             _instance.Warp(targetPosition);
         }
 
+        public static void OrderShoot(Vector3 targetPosition, Transform optionalTarget = null)
+        {
+            var bullet = BulletPool.GetBullet();
+
+            //bullet.Initialize(, optionalTarget);
+        }
+
         public static Vector3 GetPosition() => _instance.transform.position;
 
         private void NotifyPlayerDeath()
         {
-            OnPlayerDeath?.Invoke();
+            OnPlayerDied?.Invoke();
         }
     }
 }

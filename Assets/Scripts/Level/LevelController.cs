@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TestTask.Characters;
+using TestTask.UI;
 
 namespace TestTask.Level
 {
@@ -11,18 +12,41 @@ namespace TestTask.Level
         [SerializeField] LevelSegment[] segments;
         static LevelController _instance;
         int _currentSegmentIndex = -1;
+        
 
         void Awake()
         {
             if (_instance == null)
             {
                 _instance = this;
+                StartLevelUI.OnScreenTapped += OnTappedStart;
+                Player.OnPlayerDied += OnPlayerDeath;
             }
             else
             {
                 Debug.LogWarning("There has to be only 1 LevelController on the scene! Destroying 2nd instance.");
                 Destroy(this);
             }
+        }
+
+        private void OnDestroy()
+        {
+            StartLevelUI.OnScreenTapped -= OnTappedStart;
+        }
+
+        private void OnTappedStart()
+        {
+            StartLevel();
+        }
+
+        private void OnPlayerDeath()
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        private void OnActiveSegmentCleared()
+        {
+            ProgressLevel();
         }
 
         public void StartLevel()
@@ -40,7 +64,17 @@ namespace TestTask.Level
 
         void ChangeToNextSegment()
         {
+            var currentSegment = GetCurrentSegment();
+            if (currentSegment != null)
+            {
+                currentSegment.OnSegmentCleared -= OnActiveSegmentCleared;
+            }
             _currentSegmentIndex++;
+            currentSegment = GetCurrentSegment();
+            if (currentSegment != null)
+            {
+                currentSegment.OnSegmentCleared += OnActiveSegmentCleared;
+            }
         }
 
         void ActivateSegment(LevelSegment segment)

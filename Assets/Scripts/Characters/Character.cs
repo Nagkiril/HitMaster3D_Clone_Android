@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TestTask.Characters.Components;
+using TestTask.Level;
 
 namespace TestTask.Characters
 {
@@ -21,6 +22,7 @@ namespace TestTask.Characters
         {
             movement.OnMovementStopped += OnMovementStop;
             interactor.OnCharacterTouched += OnCharacterTouch;
+            interactor.OnWaypointTouched += OnWaypointTouch;
             interactor.Initialize(this);
             health.OnHealthDepleted += OnHealthDepletion;
         }
@@ -31,6 +33,11 @@ namespace TestTask.Characters
         }
 
         protected virtual void OnCharacterTouch(Character other)
+        {
+
+        }
+
+        protected virtual void OnWaypointTouch(Waypoint other)
         {
 
         }

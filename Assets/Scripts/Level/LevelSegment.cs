@@ -15,15 +15,28 @@ namespace TestTask.Level
 
         int _remainingEnemies;
 
+        private void Awake()
+        {
+            CheckSegmentCleared();
+            segmentWaypoint.OnSegmentReached += OnSegmentReach;
+            _remainingEnemies = enemies.Length;
+            foreach (var enemy in enemies)
+            {
+                enemy.OnDeath += OnEnemyDeath;
+            }
+        }
+
         public void ActivateSegment()
+        {
+            //Here we could put some logic in case segment will need something done when player starts moving there
+        }
+
+        void OnSegmentReach()
         {
             foreach (var enemy in enemies)
             {
                 enemy.Activate();
-                enemy.OnDeath += OnEnemyDeath;
             }
-            _remainingEnemies = enemies.Length;
-            CheckSegmentCleared();
         }
 
         void OnEnemyDeath()
