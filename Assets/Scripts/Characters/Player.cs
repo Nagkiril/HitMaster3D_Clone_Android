@@ -9,6 +9,7 @@ namespace TestTask.Characters
 {
     public class Player : Character
     {
+        [SerializeField] Transform shootStart;
         static Player _instance;
 
         public static event Action OnPlayerDied;
@@ -28,6 +29,17 @@ namespace TestTask.Characters
             }
         }
 
+        private void NotifyPlayerDeath()
+        {
+            OnPlayerDied?.Invoke();
+        }
+
+        private void Shoot(Vector3 targetPosition, Transform optionalTarget = null)
+        {
+            var bullet = BulletPool.GetBullet();
+            bullet.Initialize(shootStart.position, Quaternion.LookRotation(targetPosition - shootStart.position, Vector3.up), optionalTarget);
+        }
+
         protected override void OnWaypointTouch(Waypoint other)
         {
             other.EnterWaypoint(this);
@@ -45,16 +57,9 @@ namespace TestTask.Characters
 
         public static void OrderShoot(Vector3 targetPosition, Transform optionalTarget = null)
         {
-            var bullet = BulletPool.GetBullet();
-
-            //bullet.Initialize(, optionalTarget);
+            _instance.Shoot(targetPosition, optionalTarget);
         }
 
         public static Vector3 GetPosition() => _instance.transform.position;
-
-        private void NotifyPlayerDeath()
-        {
-            OnPlayerDied?.Invoke();
-        }
     }
 }

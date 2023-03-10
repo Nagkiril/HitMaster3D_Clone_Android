@@ -44,5 +44,12 @@ namespace TestTask.Characters.Components
         {
             transform.position = position;
         }
+
+        public void Disable()
+        {
+            enabled = false;
+            ownAgent.isStopped = true;
+            _agentMotionAwaited = false;
+        }
     }
 }

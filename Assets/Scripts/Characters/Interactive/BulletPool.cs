@@ -46,7 +46,7 @@ namespace TestTask.Characters.Interactive
             }
             else
             {
-                Bullet newBullet = Instantiate(bulletPrefab);
+                Bullet newBullet = Instantiate(bulletPrefab, transform);
                 newBullet.OnDisposed += PoolBullet;
                 return newBullet;
             }

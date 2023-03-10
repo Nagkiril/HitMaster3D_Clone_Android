@@ -10,8 +10,9 @@ namespace TestTask.Characters.Components
         [field: SerializeField] public float MaxHealth { get; private set; }
         //Here we will add UI view for the health in due time...
 
-        float _currentHealth;
+        public bool IsAlive => _currentHealth > 0;
 
+        float _currentHealth;
         public event Action OnHealthDepleted;
 
         private void Awake()

@@ -9,10 +9,10 @@ namespace TestTask.Characters
 {
     public class Character : MonoBehaviour
     {
-        [SerializeField] CharacterMovement movement;
-        [SerializeField] CharacterVisuals visuals;
-        [SerializeField] CharacterInteractor interactor;
-        [SerializeField] CharacterHealth health;
+        [SerializeField] protected CharacterMovement movement;
+        [SerializeField] protected CharacterVisuals visuals;
+        [SerializeField] protected CharacterInteractor interactor;
+        [SerializeField] protected CharacterHealth health;
 
 
         public float MaxHealth => health.MaxHealth;
@@ -54,6 +54,8 @@ namespace TestTask.Characters
 
         public virtual void Die()
         {
+            movement.Disable();
+            interactor.Disable();
             OnDeath?.Invoke();
         }
 

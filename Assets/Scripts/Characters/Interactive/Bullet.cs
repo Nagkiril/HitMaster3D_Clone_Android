@@ -53,9 +53,11 @@ namespace TestTask.Characters.Interactive
             var otherRigidbody = other.attachedRigidbody;
             if (otherRigidbody != null)
             {
+                Debug.Log($"Hit: {otherRigidbody}");
                 var otherHurtbox = otherRigidbody.GetComponent<CharacterInteractor>();
                 if (otherHurtbox != null && otherHurtbox.Owner is Enemy otherEnemy)
                 {
+                    Debug.Log($"Damage: {otherEnemy}");
                     otherEnemy.TakeDamage(bulletDamage);
                 }
             }
@@ -68,10 +70,10 @@ namespace TestTask.Characters.Interactive
             _currentFlightTime = 0f;
         }
 
-        public void Initialize(Vector3 targetPosition, Quaternion targetRotation, Transform target)
+        public void Initialize(Vector3 startPosition, Quaternion startRotation, Transform target)
         {
-            transform.position = targetPosition;
-            target.rotation = targetRotation;
+            transform.position = startPosition;
+            transform.rotation = startRotation;
             _bulletTarget = target;
         }
 

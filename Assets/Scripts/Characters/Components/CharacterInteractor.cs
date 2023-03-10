@@ -35,5 +35,10 @@ namespace TestTask.Characters.Components
                 }
             }
         }
+
+        public void Disable()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
