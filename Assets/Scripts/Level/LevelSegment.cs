@@ -17,7 +17,6 @@ namespace TestTask.Level
 
         private void Awake()
         {
-            CheckSegmentCleared();
             segmentWaypoint.OnSegmentReached += OnSegmentReach;
             _remainingEnemies = enemies.Length;
             foreach (var enemy in enemies)
@@ -37,6 +36,7 @@ namespace TestTask.Level
             {
                 enemy.Activate();
             }
+            CheckSegmentCleared();
         }
 
         void OnEnemyDeath()

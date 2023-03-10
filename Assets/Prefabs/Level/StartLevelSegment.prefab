@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 7317383675267101210}
   - component: {fileID: 7317383675267101211}
   - component: {fileID: 7317383675267101212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

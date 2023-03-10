@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 7441960999971474727}
   - component: {fileID: 7441960999971474726}
   - component: {fileID: 7441960999971474721}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 7814349925747408477}
   - component: {fileID: 6288949296865085746}
   - component: {fileID: 5744260371225533730}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NavmeshBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}

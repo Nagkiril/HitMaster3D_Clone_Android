@@ -11,7 +11,7 @@ namespace TestTask.Characters.Components
 
         public void SetMoving(bool isMoving)
         {
-            ownAnim.SetBool("Moivng", isMoving);
+            ownAnim.SetBool("Moving", isMoving);
         }
     }
 }

@@ -53,11 +53,9 @@ namespace TestTask.Characters.Interactive
             var otherRigidbody = other.attachedRigidbody;
             if (otherRigidbody != null)
             {
-                Debug.Log($"Hit: {otherRigidbody}");
                 var otherHurtbox = otherRigidbody.GetComponent<CharacterInteractor>();
                 if (otherHurtbox != null && otherHurtbox.Owner is Enemy otherEnemy)
                 {
-                    Debug.Log($"Damage: {otherEnemy}");
                     otherEnemy.TakeDamage(bulletDamage);
                 }
             }
