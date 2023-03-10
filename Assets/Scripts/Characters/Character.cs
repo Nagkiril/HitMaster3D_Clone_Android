@@ -54,6 +54,7 @@ namespace TestTask.Characters
 
         public virtual void Die()
         {
+            visuals.SetDeath();
             movement.Disable();
             interactor.Disable();
             OnDeath?.Invoke();
@@ -70,7 +71,12 @@ namespace TestTask.Characters
             movement.WarpToPosition(targetPosition);
         }
         
-        public void TakeDamage(float damageAmount)
+        public virtual void TakeDamage(float damageAmount)
+        {
+            health.TakeDamage(damageAmount);
+        }
+
+        public virtual void TakeDamage(float damageAmount, Vector3 hitVector, Transform hitTarget)
         {
             health.TakeDamage(damageAmount);
         }

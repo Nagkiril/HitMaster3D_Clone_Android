@@ -9,6 +9,7 @@ namespace TestTask.Characters
     {
         [SerializeField] CharacterInteractor[] hurtboxes;
 
+
         protected override void Awake()
         {
             base.Awake();
@@ -38,6 +39,25 @@ namespace TestTask.Characters
         public void Activate()
         {
             StartMoving(Player.GetPosition());
+        }
+
+        public override void TakeDamage(float damageAmount, Vector3 hitVector, Transform hitTarget)
+        {
+            if (health.IsAlive)
+            {
+                TakeDamage(damageAmount);
+
+                if (!health.IsAlive)
+                {
+                    foreach (var hurtbox in hurtboxes)
+                    {
+                        if (hurtbox.transform == hitTarget)
+                        {
+                            visuals.HitReaction(hitVector, hitTarget.parent);
+                        }
+                    }
+                }
+            }
         }
 
     }

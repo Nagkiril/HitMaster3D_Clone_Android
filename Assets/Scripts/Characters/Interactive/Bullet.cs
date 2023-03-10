@@ -56,7 +56,7 @@ namespace TestTask.Characters.Interactive
                 var otherHurtbox = otherRigidbody.GetComponent<CharacterInteractor>();
                 if (otherHurtbox != null && otherHurtbox.Owner is Enemy otherEnemy)
                 {
-                    otherEnemy.TakeDamage(bulletDamage);
+                    otherEnemy.TakeDamage(bulletDamage, transform.forward * bulletDamage, otherHurtbox.transform);
                 }
             }
             Dispose();
