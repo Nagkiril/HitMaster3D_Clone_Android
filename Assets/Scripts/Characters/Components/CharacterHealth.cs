@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TestTask.UI;
 
 namespace TestTask.Characters.Components
 {
     public class CharacterHealth : MonoBehaviour
     {
         [field: SerializeField] public float MaxHealth { get; private set; }
-        //Here we will add UI view for the health in due time...
+        [SerializeField] HealthBar barUI;
 
         public bool IsAlive => _currentHealth > 0;
 
@@ -26,6 +27,8 @@ namespace TestTask.Characters.Components
             if (_currentHealth > 0)
             {
                 _currentHealth -= damageAmount;
+                if (barUI != null)
+                    barUI.SetValue(_currentHealth / MaxHealth);
                 CheckHealthDepletion();
             }
         }
@@ -35,6 +38,8 @@ namespace TestTask.Characters.Components
         {
             if (_currentHealth <= 0)
             {
+                if (barUI != null)
+                    barUI.Hide();
                 OnHealthDepleted?.Invoke();
             }
         }

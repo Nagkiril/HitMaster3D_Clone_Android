@@ -9,6 +9,7 @@ namespace TestTask.Characters.Interactive
     public class Bullet : MonoBehaviour
     {
         [SerializeField] float bulletDamage;
+        [SerializeField] float bulletStoppingPower;
         [SerializeField] float bulletSpeed;
         [SerializeField] float flightMaxTime;
         [SerializeField] float flightAssistRatio;
@@ -56,7 +57,7 @@ namespace TestTask.Characters.Interactive
                 var otherHurtbox = otherRigidbody.GetComponent<CharacterInteractor>();
                 if (otherHurtbox != null && otherHurtbox.Owner is Enemy otherEnemy)
                 {
-                    otherEnemy.TakeDamage(bulletDamage, transform.forward * bulletDamage, otherHurtbox.transform);
+                    otherEnemy.TakeDamage(bulletDamage, transform.forward * bulletStoppingPower, otherHurtbox.transform);
                 }
             }
             Dispose();
