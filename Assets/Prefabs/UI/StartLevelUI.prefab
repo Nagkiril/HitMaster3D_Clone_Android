@@ -308,8 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7268e415e32adb441b145e5abff6cfeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownAnim: {fileID: 7720230978836095807}
-  tapScreen: {fileID: 7720230978535960058}
+  _ownAnim: {fileID: 7720230978836095807}
+  _tapScreen: {fileID: 7720230978535960058}
 --- !u!95 &7720230978836095807
 Animator:
   serializedVersion: 5

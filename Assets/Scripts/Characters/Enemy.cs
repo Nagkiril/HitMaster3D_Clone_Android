@@ -7,14 +7,14 @@ namespace TestTask.Characters
 {
     public class Enemy : Character
     {
-        [SerializeField] CharacterInteractor[] hurtboxes;
+        [SerializeField] private CharacterInteractor[] _hurtboxes;
 
 
         protected override void Awake()
         {
             base.Awake();
-            OnDeath += OnEnemyDied;
-            foreach (var hurtbox in hurtboxes)
+            onDeath += OnEnemyDied;
+            foreach (var hurtbox in _hurtboxes)
             {
                 hurtbox.Initialize(this);
             }
@@ -22,7 +22,7 @@ namespace TestTask.Characters
 
         protected void OnEnemyDied()
         {
-            foreach (var hurtbox in hurtboxes)
+            foreach (var hurtbox in _hurtboxes)
             {
                 hurtbox.Disable();
             }
@@ -30,9 +30,9 @@ namespace TestTask.Characters
 
         protected override void OnCharacterTouch(Character other)
         {
-            if (health && other is Player player)
+            if (_health && other is Player player)
             {
-                player.TakeDamage(player.MaxHealth);
+                player.TakeDamage(player.maxHealth);
             }
         }
 
@@ -43,17 +43,17 @@ namespace TestTask.Characters
 
         public override void TakeDamage(float damageAmount, Vector3 hitVector, Transform hitTarget)
         {
-            if (health.IsAlive)
+            if (_health.isAlive)
             {
                 TakeDamage(damageAmount);
 
-                if (!health.IsAlive)
+                if (!_health.isAlive)
                 {
-                    foreach (var hurtbox in hurtboxes)
+                    foreach (var hurtbox in _hurtboxes)
                     {
                         if (hurtbox.transform == hitTarget)
                         {
-                            visuals.HitReaction(hitVector, hitTarget.parent);
+                            _visuals.HitReaction(hitVector, hitTarget.parent);
                         }
                     }
                 }

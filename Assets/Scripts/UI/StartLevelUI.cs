@@ -8,11 +8,11 @@ namespace TestTask.UI
 {
     public class StartLevelUI : MonoBehaviour
     {
-        [SerializeField] Animator ownAnim;
-        [SerializeField] Button tapScreen;
+        [SerializeField] private Animator _ownAnim;
+        [SerializeField] private Button _tapScreen;
 
-        public static event Action OnScreenTapped;
-        static StartLevelUI _instance;
+        public static event Action onScreenTapped;
+        private static StartLevelUI _instance;
 
         // Start is called before the first frame update
         void Awake()
@@ -20,7 +20,7 @@ namespace TestTask.UI
             if (_instance == null)
             {
                 _instance = this;
-                tapScreen.onClick.AddListener(OnScreenTap);
+                _tapScreen.onClick.AddListener(OnScreenTap);
             }
             else
             {
@@ -32,19 +32,19 @@ namespace TestTask.UI
         private void OnScreenTap()
         {
             Hide();
-            OnScreenTapped?.Invoke();
+            onScreenTapped?.Invoke();
         }
 
         private void Show()
         {
-            tapScreen.gameObject.SetActive(true);
-            ownAnim.SetBool("Show", true);
+            _tapScreen.gameObject.SetActive(true);
+            _ownAnim.SetBool("Show", true);
         }
 
         private void Hide()
         {
-            ownAnim.SetBool("Show", false);
-            tapScreen.gameObject.SetActive(false);
+            _ownAnim.SetBool("Show", false);
+            _tapScreen.gameObject.SetActive(false);
         }
 
         public static void ShowScreen()

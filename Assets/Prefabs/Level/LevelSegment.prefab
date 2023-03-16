@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa771f732b6feb644a4a80f20b721f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPlacement: {fileID: 7441960999614133781}
+  _playerPlacement: {fileID: 7441960999614133781}
 --- !u!54 &7812757628861154760
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -320,8 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2499e2f137ee453489bfba4fdc607358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentWaypoint: {fileID: 7441960999614133866}
-  enemies: []
+  _segmentWaypoint: {fileID: 7441960999614133866}
+  _enemies: []
 --- !u!1 &7441961000656717476
 GameObject:
   m_ObjectHideFlags: 0

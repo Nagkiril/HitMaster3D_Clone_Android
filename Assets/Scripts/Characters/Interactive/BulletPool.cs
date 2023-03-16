@@ -6,10 +6,10 @@ namespace TestTask.Characters.Interactive
 {
     public class BulletPool : MonoBehaviour
     {
-        [SerializeField] Bullet bulletPrefab;
-        List<Bullet> _pooledInstances;
+        [SerializeField] private Bullet _bulletPrefab;
+        private List<Bullet> _pooledInstances;
 
-        static BulletPool _instance;
+        private static BulletPool _instance;
 
 
         void Awake()
@@ -46,8 +46,8 @@ namespace TestTask.Characters.Interactive
             }
             else
             {
-                Bullet newBullet = Instantiate(bulletPrefab, transform);
-                newBullet.OnDisposed += PoolBullet;
+                Bullet newBullet = Instantiate(_bulletPrefab, transform);
+                newBullet.onDisposed += PoolBullet;
                 return newBullet;
             }
         }

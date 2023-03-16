@@ -8,13 +8,13 @@ namespace TestTask.UI
 {
     public class HealthBar : MonoBehaviour
     {
-        [SerializeField] Animator ownAnim;
-        [SerializeField] float defaultTransitionTime;
-        [SerializeField] float stayShownTime;
-        [SerializeField] Image healthIndicator;
+        [SerializeField] private Animator _ownAnim;
+        [SerializeField] private float _defaultTransitionTime;
+        [SerializeField] private float _stayShownTime;
+        [SerializeField] private Image _healthIndicator;
 
-        bool _isShown;
-        Sequence _fillSequence;
+        private bool _isShown;
+        private Sequence _fillSequence;
 
         private void Awake()
         {
@@ -39,14 +39,14 @@ namespace TestTask.UI
         public void Hide()
         {
             _isShown = false;
-            ownAnim.SetBool("Show", false);
+            _ownAnim.SetBool("Show", false);
         }
 
         public void Show()
         {
             gameObject.SetActive(true);
             _isShown = true;
-            ownAnim.SetBool("Show", true);
+            _ownAnim.SetBool("Show", true);
         }
 
         public void SetValue(float value, float animTime = -1f)
@@ -55,16 +55,16 @@ namespace TestTask.UI
             if (_fillSequence != null)
                 _fillSequence.Kill();
             if (animTime == -1f)
-                animTime = defaultTransitionTime;
+                animTime = _defaultTransitionTime;
             if (animTime > 0f)
             {
                 _fillSequence = DOTween.Sequence();
-                _fillSequence.Append(healthIndicator.transform.DOScaleX(value, animTime));
-                _fillSequence.AppendInterval(stayShownTime);
+                _fillSequence.Append(_healthIndicator.transform.DOScaleX(value, animTime));
+                _fillSequence.AppendInterval(_stayShownTime);
                 _fillSequence.AppendCallback(Hide);
             } else
             {
-                healthIndicator.fillAmount = value;
+                _healthIndicator.fillAmount = value;
             }
         }
     }

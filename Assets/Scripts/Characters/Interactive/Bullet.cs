@@ -8,43 +8,40 @@ namespace TestTask.Characters.Interactive
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] float bulletDamage;
-        [SerializeField] float bulletStoppingPower;
-        [SerializeField] float bulletSpeed;
-        [SerializeField] float flightMaxTime;
-        [SerializeField] float flightAssistRatio;
-        [SerializeField] Rigidbody ownRigidbody;
-        public event Action<Bullet> OnDisposed;
+        [SerializeField] private float _bulletDamage;
+        [SerializeField] private float _bulletStoppingPower;
+        [SerializeField] private float _bulletSpeed;
+        [SerializeField] private float _flightMaxTime;
+        [SerializeField] private float _flightAssistRatio;
+        [SerializeField] Rigidbody _ownRigidbody;
+        public event Action<Bullet> onDisposed;
         
-        Transform _bulletTarget;
-        float _currentFlightTime;
+        private Transform _bulletTarget;
+        private float _currentFlightTime;
 
 
         private void FixedUpdate()
         {
-            if (gameObject.activeInHierarchy)
-            {
-                _currentFlightTime += Time.deltaTime;
+            _currentFlightTime += Time.deltaTime;
 
-                if (_currentFlightTime < flightMaxTime)
+            if (_currentFlightTime < _flightMaxTime)
+            {
+                var moveDistance = _bulletSpeed * Time.deltaTime;
+                if (_bulletTarget == null)
                 {
-                    var moveDistance = bulletSpeed * Time.deltaTime;
-                    if (_bulletTarget == null)
-                    {
-                        ownRigidbody.MovePosition(transform.position + transform.forward * moveDistance);
-                    }
-                    else
-                    {
-                        //This is a little heavy, but should allow for nicer gameplay with a touch of flight assist
-                        //This may also be dangerous if bullet passes the target and misses, but we can keep it as is for the prototype
-                        Vector3 moveDirection = Vector3.Lerp(transform.forward, (_bulletTarget.position - transform.position).normalized, flightAssistRatio);
-                        ownRigidbody.MovePosition(transform.position + moveDirection * moveDistance);
-                    }
+                    _ownRigidbody.MovePosition(transform.position + transform.forward * moveDistance);
                 }
                 else
                 {
-                    Dispose();
+                    //This is a little heavy, but should allow for nicer gameplay with a touch of flight assist
+                    //This may also be dangerous if bullet passes the target and misses, but we can keep it as is for the prototype
+                    Vector3 moveDirection = Vector3.Lerp(transform.forward, (_bulletTarget.position - transform.position).normalized, _flightAssistRatio);
+                    _ownRigidbody.MovePosition(transform.position + moveDirection * moveDistance);
                 }
+            }
+            else
+            {
+                Dispose();
             }
         }
 
@@ -55,9 +52,9 @@ namespace TestTask.Characters.Interactive
             if (otherRigidbody != null)
             {
                 var otherHurtbox = otherRigidbody.GetComponent<CharacterInteractor>();
-                if (otherHurtbox != null && otherHurtbox.Owner is Enemy otherEnemy)
+                if (otherHurtbox != null && otherHurtbox.owner is Enemy otherEnemy)
                 {
-                    otherEnemy.TakeDamage(bulletDamage, transform.forward * bulletStoppingPower, otherHurtbox.transform);
+                    otherEnemy.TakeDamage(_bulletDamage, transform.forward * _bulletStoppingPower, otherHurtbox.transform);
                 }
             }
             Dispose();
@@ -79,7 +76,7 @@ namespace TestTask.Characters.Interactive
         private void Dispose()
         {
             gameObject.SetActive(false);
-            OnDisposed?.Invoke(this);
+            onDisposed?.Invoke(this);
         }
     }
 }

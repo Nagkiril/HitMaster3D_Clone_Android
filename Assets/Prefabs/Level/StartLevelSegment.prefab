@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa771f732b6feb644a4a80f20b721f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPlacement: {fileID: 7317383674374801704}
+  _playerPlacement: {fileID: 7317383674374801704}
 --- !u!1 &7317383674674436798
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2499e2f137ee453489bfba4fdc607358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentWaypoint: {fileID: 7317383674374801751}
-  enemies: []
+  _segmentWaypoint: {fileID: 7317383674374801751}
+  _enemies: []
 --- !u!1 &7317383675267101214
 GameObject:
   m_ObjectHideFlags: 0

@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6777a3ccfa8b95a4e9e0551bc1b8097f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 5
-  bulletStoppingPower: 25
-  bulletSpeed: 10
-  flightMaxTime: 5
-  flightAssistRatio: 0.3
-  ownRigidbody: {fileID: 3213280692422197399}
+  _bulletDamage: 5
+  _bulletStoppingPower: 25
+  _bulletSpeed: 10
+  _flightMaxTime: 5
+  _flightAssistRatio: 0.3
+  _ownRigidbody: {fileID: 3213280692422197399}

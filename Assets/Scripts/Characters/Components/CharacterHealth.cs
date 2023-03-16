@@ -8,17 +8,17 @@ namespace TestTask.Characters.Components
 {
     public class CharacterHealth : MonoBehaviour
     {
-        [field: SerializeField] public float MaxHealth { get; private set; }
-        [SerializeField] HealthBar barUI;
+        [field: SerializeField] public float maxHealth { get; private set; }
+        [SerializeField] private HealthBar _barUI;
+        private float _currentHealth;
 
-        public bool IsAlive => _currentHealth > 0;
 
-        float _currentHealth;
-        public event Action OnHealthDepleted;
+        public bool isAlive => _currentHealth > 0;
+        public event Action onHealthDepleted;
 
         private void Awake()
         {
-            _currentHealth = MaxHealth;
+            _currentHealth = maxHealth;
         }
 
 
@@ -27,8 +27,8 @@ namespace TestTask.Characters.Components
             if (_currentHealth > 0)
             {
                 _currentHealth -= damageAmount;
-                if (barUI != null)
-                    barUI.SetValue(_currentHealth / MaxHealth);
+                if (_barUI != null)
+                    _barUI.SetValue(_currentHealth / maxHealth);
                 CheckHealthDepletion();
             }
         }
@@ -38,9 +38,9 @@ namespace TestTask.Characters.Components
         {
             if (_currentHealth <= 0)
             {
-                if (barUI != null)
-                    barUI.Hide();
-                OnHealthDepleted?.Invoke();
+                if (_barUI != null)
+                    _barUI.Hide();
+                onHealthDepleted?.Invoke();
             }
         }
     }

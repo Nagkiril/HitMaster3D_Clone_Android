@@ -9,10 +9,10 @@ namespace TestTask.Characters
 {
     public class Player : Character
     {
-        [SerializeField] Transform shootStart;
-        static Player _instance;
+        [SerializeField] private Transform _bulletStartPosition;
+        private static Player _instance;
 
-        public static event Action OnPlayerDied;
+        public static event Action onPlayerDied;
 
 
         override protected void Awake()
@@ -21,7 +21,7 @@ namespace TestTask.Characters
             {
                 _instance = this;
                 base.Awake();
-                OnDeath += NotifyPlayerDeath;
+                onDeath += NotifyPlayerDeath;
             } else
             {
                 Debug.LogWarning("There should be only 1 Player on the scene! Destroying another one.");
@@ -31,13 +31,13 @@ namespace TestTask.Characters
 
         private void NotifyPlayerDeath()
         {
-            OnPlayerDied?.Invoke();
+            onPlayerDied?.Invoke();
         }
 
         private void Shoot(Vector3 targetPosition, Transform optionalTarget = null)
         {
             var bullet = BulletPool.GetBullet();
-            bullet.Initialize(shootStart.position, Quaternion.LookRotation(targetPosition - shootStart.position, Vector3.up), optionalTarget);
+            bullet.Initialize(_bulletStartPosition.position, Quaternion.LookRotation(targetPosition - _bulletStartPosition.position, Vector3.up), optionalTarget);
         }
 
         protected override void OnWaypointTouch(Waypoint other)

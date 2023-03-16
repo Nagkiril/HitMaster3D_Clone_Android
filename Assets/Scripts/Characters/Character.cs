@@ -9,22 +9,22 @@ namespace TestTask.Characters
 {
     public class Character : MonoBehaviour
     {
-        [SerializeField] protected CharacterMovement movement;
-        [SerializeField] protected CharacterVisuals visuals;
-        [SerializeField] protected CharacterInteractor interactor;
-        [SerializeField] protected CharacterHealth health;
+        [SerializeField] protected CharacterMovement _movement;
+        [SerializeField] protected CharacterVisuals _visuals;
+        [SerializeField] protected CharacterInteractor _interactor;
+        [SerializeField] protected CharacterHealth _health;
 
 
-        public float MaxHealth => health.MaxHealth;
-        public event Action OnDeath;
+        public float maxHealth => _health.maxHealth;
+        public event Action onDeath;
 
         protected virtual void Awake()
         {
-            movement.OnMovementStopped += OnMovementStop;
-            interactor.OnCharacterTouched += OnCharacterTouch;
-            interactor.OnWaypointTouched += OnWaypointTouch;
-            interactor.Initialize(this);
-            health.OnHealthDepleted += OnHealthDepletion;
+            _movement.onMovementStopped += OnMovementStop;
+            _interactor.onCharacterTouched += OnCharacterTouch;
+            _interactor.onWaypointTouched += OnWaypointTouch;
+            _interactor.Initialize(this);
+            _health.onHealthDepleted += OnHealthDepletion;
         }
 
         protected virtual void Start()
@@ -49,36 +49,36 @@ namespace TestTask.Characters
 
         protected virtual void OnMovementStop()
         {
-            visuals.SetMoving(false);
+            _visuals.SetMoving(false);
         }
 
         public virtual void Die()
         {
-            visuals.SetDeath();
-            movement.Disable();
-            interactor.Disable();
-            OnDeath?.Invoke();
+            _visuals.SetDeath();
+            _movement.Disable();
+            _interactor.Disable();
+            onDeath?.Invoke();
         }
 
         public virtual void StartMoving(Vector3 targetPosition)
         {
-            movement.MoveToPosition(targetPosition);
-            visuals.SetMoving(true);
+            _movement.MoveToPosition(targetPosition);
+            _visuals.SetMoving(true);
         }
 
         public virtual void Warp(Vector3 targetPosition)
         {
-            movement.WarpToPosition(targetPosition);
+            _movement.WarpToPosition(targetPosition);
         }
         
         public virtual void TakeDamage(float damageAmount)
         {
-            health.TakeDamage(damageAmount);
+            _health.TakeDamage(damageAmount);
         }
 
         public virtual void TakeDamage(float damageAmount, Vector3 hitVector, Transform hitTarget)
         {
-            health.TakeDamage(damageAmount);
+            _health.TakeDamage(damageAmount);
         }
     }
 }

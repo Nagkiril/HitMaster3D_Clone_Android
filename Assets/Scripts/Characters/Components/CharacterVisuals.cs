@@ -6,29 +6,29 @@ namespace TestTask.Characters.Components
 {
     public class CharacterVisuals : MonoBehaviour
     {
-        [SerializeField] Animator ownAnim;
-        [SerializeField] CharacterRagdoll ragdoll;
+        [SerializeField] private Animator _ownAnim;
+        [SerializeField] private CharacterRagdoll _ragdoll;
 
 
         public void SetMoving(bool isMoving)
         {
-            ownAnim.SetBool("Moving", isMoving);
+            _ownAnim.SetBool("Moving", isMoving);
         }
 
         public void SetDeath()
         {
-            ownAnim.enabled = false;
-            if (ragdoll != null)
+            _ownAnim.enabled = false;
+            if (_ragdoll != null)
             {
-                ragdoll.Activate();
+                _ragdoll.Activate();
             }
         }
 
         public void HitReaction(Vector3 hitVector, Transform hitTarget)
         {
-            if (ragdoll != null)
+            if (_ragdoll != null)
             {
-                ragdoll.ApplyReaction(hitVector, hitTarget);
+                _ragdoll.ApplyReaction(hitVector, hitTarget);
             }
         }
     }

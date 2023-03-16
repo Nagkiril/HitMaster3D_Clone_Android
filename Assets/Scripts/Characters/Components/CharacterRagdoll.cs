@@ -6,7 +6,7 @@ namespace TestTask.Characters.Components
 {
     public class CharacterRagdoll : MonoBehaviour
     {
-        [SerializeField] Rigidbody[] ragdollParts;
+        [SerializeField] private Rigidbody[] _ragdollParts;
 
         private void Awake()
         {
@@ -16,7 +16,7 @@ namespace TestTask.Characters.Components
 
         public void Deactivate()
         {
-            foreach (var part in ragdollParts)
+            foreach (var part in _ragdollParts)
             {
                 part.isKinematic = true;
             }
@@ -24,7 +24,7 @@ namespace TestTask.Characters.Components
 
         public void Activate()
         {
-            foreach (var part in ragdollParts)
+            foreach (var part in _ragdollParts)
             {
                 part.isKinematic = false;
             }
@@ -32,7 +32,7 @@ namespace TestTask.Characters.Components
         
         public void ApplyReaction(Vector3 reactionVector, Transform reactionTarget)
         {
-            foreach (var part in ragdollParts)
+            foreach (var part in _ragdollParts)
             {
                 if (part.transform == reactionTarget)
                 {

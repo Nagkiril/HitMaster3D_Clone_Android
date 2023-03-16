@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31a52e1b2fabdb48bde20e43d87e39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 1
+  <maxHealth>k__BackingField: 10
+  _barUI: {fileID: 0}
 --- !u!1 &5050088949358681992
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 341859ee69c5ec740bcd8b1ece602a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownAnim: {fileID: 452177991331349760}
+  _ownAnim: {fileID: 452177991331349760}
+  _ragdoll: {fileID: 0}
 --- !u!1 &5050088950033574608
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,11 +219,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efa5164f77da904a87fc217fadc3edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 5050088950672978205}
-  visuals: {fileID: 5050088949358681994}
-  interactor: {fileID: 5050088950033574613}
-  health: {fileID: 5050088949235592920}
-  shootStart: {fileID: 4716902841927882168}
+  _movement: {fileID: 5050088950672978205}
+  _visuals: {fileID: 5050088949358681994}
+  _interactor: {fileID: 5050088950033574613}
+  _health: {fileID: 5050088949235592920}
+  _bulletStartPosition: {fileID: 4716902841927882168}
 --- !u!114 &5050088950672978205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642bcb8377e3fc642a7a060bce258706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownAgent: {fileID: 5050088950672978200}
+  _ownAgent: {fileID: 5050088950672978200}
 --- !u!195 &5050088950672978200
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -267,7 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4716902841927882168}
   m_Layer: 0
-  m_Name: ShootStartPosition
+  m_Name: BulletStartPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

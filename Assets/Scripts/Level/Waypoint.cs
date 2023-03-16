@@ -8,19 +8,19 @@ namespace TestTask.Level
 {
     public class Waypoint : MonoBehaviour
     {
-        [SerializeField] Transform playerPlacement;
+        [SerializeField] private Transform _playerPlacement;
 
-        public event Action OnSegmentReached;
+        public event Action onSegmentReached;
 
 
 
-        public Vector3 GetPlayerPlace() => playerPlacement.position;
+        public Vector3 GetPlayerPlace() => _playerPlacement.position;
 
         public void EnterWaypoint(Character entrant)
         {
             if (entrant is Player)
             {
-                OnSegmentReached?.Invoke();
+                onSegmentReached?.Invoke();
             }
         }
     }

@@ -9,9 +9,9 @@ namespace TestTask.Level
 {
     public class LevelController : MonoBehaviour
     {
-        [SerializeField] LevelSegment[] segments;
-        static LevelController _instance;
-        int _currentSegmentIndex = -1;
+        [SerializeField] private LevelSegment[] _segments;
+        private static LevelController _instance;
+        private int _currentSegmentIndex = -1;
         
 
         void Awake()
@@ -19,8 +19,8 @@ namespace TestTask.Level
             if (_instance == null)
             {
                 _instance = this;
-                StartLevelUI.OnScreenTapped += OnTappedStart;
-                Player.OnPlayerDied += OnPlayerDeath;
+                StartLevelUI.onScreenTapped += OnTappedStart;
+                Player.onPlayerDied += OnPlayerDeath;
             }
             else
             {
@@ -31,7 +31,7 @@ namespace TestTask.Level
 
         private void OnDestroy()
         {
-            StartLevelUI.OnScreenTapped -= OnTappedStart;
+            StartLevelUI.onScreenTapped -= OnTappedStart;
         }
 
         private void OnTappedStart()
@@ -67,13 +67,13 @@ namespace TestTask.Level
             var currentSegment = GetCurrentSegment();
             if (currentSegment != null)
             {
-                currentSegment.OnSegmentCleared -= OnActiveSegmentCleared;
+                currentSegment.onSegmentCleared -= OnActiveSegmentCleared;
             }
             _currentSegmentIndex++;
             currentSegment = GetCurrentSegment();
             if (currentSegment != null)
             {
-                currentSegment.OnSegmentCleared += OnActiveSegmentCleared;
+                currentSegment.onSegmentCleared += OnActiveSegmentCleared;
             }
         }
 
@@ -96,9 +96,9 @@ namespace TestTask.Level
 
         LevelSegment GetCurrentSegment()
         {
-            if (_currentSegmentIndex >= 0 && _currentSegmentIndex < segments.Length)
+            if (_currentSegmentIndex >= 0 && _currentSegmentIndex < _segments.Length)
             {
-                return segments[_currentSegmentIndex];
+                return _segments[_currentSegmentIndex];
             }
             return null;
         }

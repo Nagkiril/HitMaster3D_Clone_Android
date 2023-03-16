@@ -8,14 +8,14 @@ namespace TestTask.Characters.Components
 {
     public class CharacterInteractor : MonoBehaviour
     {
-        public Character Owner { get; private set; }
+        public Character owner { get; private set; }
 
-        public event Action<Character> OnCharacterTouched;
-        public event Action<Waypoint> OnWaypointTouched;
+        public event Action<Character> onCharacterTouched;
+        public event Action<Waypoint> onWaypointTouched;
 
         public void Initialize(Character owner)
         {
-            Owner = owner;
+            this.owner = owner;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -24,14 +24,14 @@ namespace TestTask.Characters.Components
             if (otherRigidbody != null)
             {
                 var otherInteractor = otherRigidbody.GetComponent<CharacterInteractor>();
-                if (otherInteractor != null && Owner != otherInteractor.Owner)
+                if (otherInteractor != null && owner != otherInteractor.owner)
                 {
-                    OnCharacterTouched?.Invoke(otherInteractor.Owner);
+                    onCharacterTouched?.Invoke(otherInteractor.owner);
                 }
                 var otherWaypoint = otherRigidbody.GetComponent<Waypoint>();
                 if (otherWaypoint != null)
                 {
-                    OnWaypointTouched?.Invoke(otherWaypoint);
+                    onWaypointTouched?.Invoke(otherWaypoint);
                 }
             }
         }

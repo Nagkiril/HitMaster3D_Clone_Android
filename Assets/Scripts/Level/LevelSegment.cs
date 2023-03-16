@@ -8,20 +8,20 @@ namespace TestTask.Level
 {
     public class LevelSegment : MonoBehaviour
     {
-        [SerializeField] Waypoint segmentWaypoint;
-        [SerializeField] Enemy[] enemies;
+        [SerializeField] private Waypoint _segmentWaypoint;
+        [SerializeField] private Enemy[] _enemies;
 
-        public event Action OnSegmentCleared;
+        public event Action onSegmentCleared;
 
-        int _remainingEnemies;
+        private int _remainingEnemies;
 
         private void Awake()
         {
-            segmentWaypoint.OnSegmentReached += OnSegmentReach;
-            _remainingEnemies = enemies.Length;
-            foreach (var enemy in enemies)
+            _segmentWaypoint.onSegmentReached += OnSegmentReach;
+            _remainingEnemies = _enemies.Length;
+            foreach (var enemy in _enemies)
             {
-                enemy.OnDeath += OnEnemyDeath;
+                enemy.onDeath += OnEnemyDeath;
             }
         }
 
@@ -32,7 +32,7 @@ namespace TestTask.Level
 
         void OnSegmentReach()
         {
-            foreach (var enemy in enemies)
+            foreach (var enemy in _enemies)
             {
                 enemy.Activate();
             }
@@ -49,10 +49,10 @@ namespace TestTask.Level
         {
             if (_remainingEnemies == 0)
             {
-                OnSegmentCleared?.Invoke();
+                onSegmentCleared?.Invoke();
             }
         }
 
-        public Vector3 GetPlayerPlace() => segmentWaypoint.GetPlayerPlace();
+        public Vector3 GetPlayerPlace() => _segmentWaypoint.GetPlayerPlace();
     }
 }
