@@ -14,12 +14,15 @@ namespace TestTask.UI
         public static event Action onScreenTapped;
         private static StartLevelUI _instance;
 
+        private int _animShowHash;
+
         // Start is called before the first frame update
         void Awake()
         {
             if (_instance == null)
             {
                 _instance = this;
+                _animShowHash = Animator.StringToHash("Show");
                 _tapScreen.onClick.AddListener(OnScreenTap);
             }
             else
@@ -38,12 +41,12 @@ namespace TestTask.UI
         private void Show()
         {
             _tapScreen.gameObject.SetActive(true);
-            _ownAnim.SetBool("Show", true);
+            _ownAnim.SetBool(_animShowHash, true);
         }
 
         private void Hide()
         {
-            _ownAnim.SetBool("Show", false);
+            _ownAnim.SetBool(_animShowHash, false);
             _tapScreen.gameObject.SetActive(false);
         }
 

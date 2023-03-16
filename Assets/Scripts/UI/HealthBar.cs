@@ -15,10 +15,13 @@ namespace TestTask.UI
 
         private bool _isShown;
         private Sequence _fillSequence;
+        private static int _animShowHash;
 
         private void Awake()
         {
             gameObject.SetActive(false);
+            if (_animShowHash == 0)
+                _animShowHash = Animator.StringToHash("Show");
         }
 
 
@@ -39,14 +42,14 @@ namespace TestTask.UI
         public void Hide()
         {
             _isShown = false;
-            _ownAnim.SetBool("Show", false);
+            _ownAnim.SetBool(_animShowHash, false);
         }
 
         public void Show()
         {
             gameObject.SetActive(true);
             _isShown = true;
-            _ownAnim.SetBool("Show", true);
+            _ownAnim.SetBool(_animShowHash, true);
         }
 
         public void SetValue(float value, float animTime = -1f)

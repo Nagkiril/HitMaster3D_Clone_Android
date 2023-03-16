@@ -21,7 +21,6 @@ namespace TestTask.Characters
             {
                 _instance = this;
                 base.Awake();
-                onDeath += NotifyPlayerDeath;
             } else
             {
                 Debug.LogWarning("There should be only 1 Player on the scene! Destroying another one.");
@@ -29,8 +28,9 @@ namespace TestTask.Characters
             }
         }
 
-        private void NotifyPlayerDeath()
+        public override void Die()
         {
+            base.Die();
             onPlayerDied?.Invoke();
         }
 

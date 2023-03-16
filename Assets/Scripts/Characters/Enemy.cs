@@ -13,15 +13,16 @@ namespace TestTask.Characters
         protected override void Awake()
         {
             base.Awake();
-            onDeath += OnEnemyDied;
             foreach (var hurtbox in _hurtboxes)
             {
                 hurtbox.Initialize(this);
             }
         }
 
-        protected void OnEnemyDied()
+        public override void Die()
         {
+            base.Die();
+
             foreach (var hurtbox in _hurtboxes)
             {
                 hurtbox.Disable();

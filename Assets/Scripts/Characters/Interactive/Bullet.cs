@@ -13,7 +13,7 @@ namespace TestTask.Characters.Interactive
         [SerializeField] private float _bulletSpeed;
         [SerializeField] private float _flightMaxTime;
         [SerializeField] private float _flightAssistRatio;
-        [SerializeField] Rigidbody _ownRigidbody;
+        [SerializeField] private Rigidbody _ownRigidbody;
         public event Action<Bullet> onDisposed;
         
         private Transform _bulletTarget;

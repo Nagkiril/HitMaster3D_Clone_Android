@@ -9,10 +9,19 @@ namespace TestTask.Characters.Components
         [SerializeField] private Animator _ownAnim;
         [SerializeField] private CharacterRagdoll _ragdoll;
 
+        private static int _animMoveHash;
+
+        private void Awake()
+        {
+            if (_animMoveHash == 0)
+            {
+                _animMoveHash = Animator.StringToHash("Moving");
+            }
+        }
 
         public void SetMoving(bool isMoving)
         {
-            _ownAnim.SetBool("Moving", isMoving);
+            _ownAnim.SetBool(_animMoveHash, isMoving);
         }
 
         public void SetDeath()

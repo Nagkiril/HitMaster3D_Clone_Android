@@ -13,8 +13,11 @@ namespace TestTask.Level
         private const string TARGET_LAYER_NAME = "Targetable";
         private LayerMask _targetLayerMask;
 
+        private Camera _mainCam;
+
         void Awake()
         {
+            _mainCam = Camera.main;
             _targetLayerMask = LayerMask.GetMask(TARGET_LAYER_NAME);
         }
 
@@ -29,15 +32,15 @@ namespace TestTask.Level
             Transform shootTarget = null;
 
             RaycastHit raycastHit;
-            Vector3 propagationStart = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, transform.localPosition.z));
-            Vector3 propagationEnd = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, _maxProjectionDistance));
+            Vector3 propagationStart = _mainCam.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, transform.localPosition.z));
+            Vector3 propagationEnd = _mainCam.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, _maxProjectionDistance));
             if (Physics.Raycast(propagationStart, propagationEnd - propagationStart, out raycastHit, _maxProjectionDistance, _targetLayerMask))
             {
                 shootPosition = raycastHit.point;
                 shootTarget = raycastHit.transform;
             } else
             {
-                shootPosition = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, _targetlessAimDistance));
+                shootPosition = _mainCam.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, _targetlessAimDistance));
             }
             Player.OrderShoot(shootPosition, shootTarget);
         }
