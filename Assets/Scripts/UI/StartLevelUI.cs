@@ -16,8 +16,7 @@ namespace TestTask.UI
 
         private int _animShowHash;
 
-        // Start is called before the first frame update
-        void Awake()
+        private void Awake()
         {
             if (_instance == null)
             {

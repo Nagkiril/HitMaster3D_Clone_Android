@@ -16,6 +16,9 @@ namespace TestTask.Characters
 
 
         public float maxHealth => _health.maxHealth;
+        public float currentHealth => _health.currentHealth;
+
+        public event Action onHealthChanged;
         public event Action onDeath;
 
         protected virtual void Awake()
@@ -25,6 +28,7 @@ namespace TestTask.Characters
             _interactor.onWaypointTouched += OnWaypointTouch;
             _interactor.Initialize(this);
             _health.onHealthDepleted += OnHealthDepletion;
+            _health.onHealthChanged += OnHealthChange;
         }
 
         protected virtual void Start()
@@ -45,6 +49,11 @@ namespace TestTask.Characters
         protected virtual void OnHealthDepletion()
         {
             Die();
+        }
+
+        protected virtual void OnHealthChange()
+        {
+            onHealthChanged?.Invoke();
         }
 
         protected virtual void OnMovementStop()

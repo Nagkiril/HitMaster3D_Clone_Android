@@ -12,9 +12,9 @@ namespace TestTask.Level
         [SerializeField] private LevelSegment[] _segments;
         private static LevelController _instance;
         private int _currentSegmentIndex = -1;
-        
 
-        void Awake()
+
+        private void Awake()
         {
             if (_instance == null)
             {
@@ -49,12 +49,12 @@ namespace TestTask.Level
             ProgressLevel();
         }
 
-        public void StartLevel()
+        private void StartLevel()
         {
             ProgressLevel();
         }
 
-        public void ProgressLevel()
+        private void ProgressLevel()
         {
             ChangeToNextSegment();
             ActivateSegment(GetCurrentSegment());
@@ -62,7 +62,7 @@ namespace TestTask.Level
         }
         
 
-        void ChangeToNextSegment()
+        private void ChangeToNextSegment()
         {
             var currentSegment = GetCurrentSegment();
             if (currentSegment != null)
@@ -77,7 +77,7 @@ namespace TestTask.Level
             }
         }
 
-        void ActivateSegment(LevelSegment segment)
+        private void ActivateSegment(LevelSegment segment)
         {
             if (segment != null)
             {
@@ -86,7 +86,7 @@ namespace TestTask.Level
             }
         }
 
-        void CheckLevelEnding()
+        private void CheckLevelEnding()
         {
             if (GetCurrentSegment() == null)
             {
@@ -94,7 +94,7 @@ namespace TestTask.Level
             }
         }
 
-        LevelSegment GetCurrentSegment()
+        private LevelSegment GetCurrentSegment()
         {
             if (_currentSegmentIndex >= 0 && _currentSegmentIndex < _segments.Length)
             {

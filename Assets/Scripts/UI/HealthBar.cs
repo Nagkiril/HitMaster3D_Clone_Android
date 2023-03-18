@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TestTask.Characters;
 
 namespace TestTask.UI
 {
@@ -12,6 +13,7 @@ namespace TestTask.UI
         [SerializeField] private float _defaultTransitionTime;
         [SerializeField] private float _stayShownTime;
         [SerializeField] private Image _healthIndicator;
+        [SerializeField] private Character target;
 
         private bool _isShown;
         private Sequence _fillSequence;
@@ -20,10 +22,15 @@ namespace TestTask.UI
         private void Awake()
         {
             gameObject.SetActive(false);
+            target.onHealthChanged += UpdateView;
             if (_animShowHash == 0)
                 _animShowHash = Animator.StringToHash("Show");
         }
 
+        private void OnDestroy()
+        {
+            target.onHealthChanged -= UpdateView;
+        }
 
         private void Update()
         {
@@ -52,23 +59,17 @@ namespace TestTask.UI
             _ownAnim.SetBool(_animShowHash, true);
         }
 
-        public void SetValue(float value, float animTime = -1f)
+        public void UpdateView()
         {
             Show();
+            var healthRatio = target.currentHealth / target.maxHealth;
             if (_fillSequence != null)
                 _fillSequence.Kill();
-            if (animTime == -1f)
-                animTime = _defaultTransitionTime;
-            if (animTime > 0f)
-            {
-                _fillSequence = DOTween.Sequence();
-                _fillSequence.Append(_healthIndicator.transform.DOScaleX(value, animTime));
+            _fillSequence = DOTween.Sequence();
+            _fillSequence.Append(_healthIndicator.transform.DOScaleX(healthRatio, _defaultTransitionTime));
+            if (healthRatio > 0)
                 _fillSequence.AppendInterval(_stayShownTime);
-                _fillSequence.AppendCallback(Hide);
-            } else
-            {
-                _healthIndicator.fillAmount = value;
-            }
+            _fillSequence.AppendCallback(Hide);
         }
     }
 }

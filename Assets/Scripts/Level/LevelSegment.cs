@@ -25,12 +25,7 @@ namespace TestTask.Level
             }
         }
 
-        public void ActivateSegment()
-        {
-            //Here we could put some logic in case segment will need something done when player starts moving there
-        }
-
-        void OnSegmentReach()
+        private void OnSegmentReach()
         {
             foreach (var enemy in _enemies)
             {
@@ -39,18 +34,23 @@ namespace TestTask.Level
             CheckSegmentCleared();
         }
 
-        void OnEnemyDeath()
+        private void OnEnemyDeath()
         {
             _remainingEnemies--;
             CheckSegmentCleared();
         }
 
-        void CheckSegmentCleared()
+        private void CheckSegmentCleared()
         {
             if (_remainingEnemies == 0)
             {
                 onSegmentCleared?.Invoke();
             }
+        }
+
+        public void ActivateSegment()
+        {
+            //Here we could put some logic in case segment will need something done when player starts moving there
         }
 
         public Vector3 GetPlayerPlace() => _segmentWaypoint.GetPlayerPlace();

@@ -60,6 +60,12 @@ namespace TestTask.Characters.Interactive
             Dispose();
         }
 
+        private void Dispose()
+        {
+            gameObject.SetActive(false);
+            onDisposed?.Invoke(this);
+        }
+
         public void Reactivate()
         {
             gameObject.SetActive(true);
@@ -71,12 +77,6 @@ namespace TestTask.Characters.Interactive
             transform.position = startPosition;
             transform.rotation = startRotation;
             _bulletTarget = target;
-        }
-
-        private void Dispose()
-        {
-            gameObject.SetActive(false);
-            onDisposed?.Invoke(this);
         }
     }
 }

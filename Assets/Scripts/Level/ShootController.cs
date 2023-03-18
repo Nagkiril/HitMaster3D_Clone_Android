@@ -15,15 +15,10 @@ namespace TestTask.Level
 
         private Camera _mainCam;
 
-        void Awake()
+        private void Awake()
         {
             _mainCam = Camera.main;
             _targetLayerMask = LayerMask.GetMask(TARGET_LAYER_NAME);
-        }
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            PropagateInput(eventData);
         }
 
         private void PropagateInput(PointerEventData eventData)
@@ -43,6 +38,11 @@ namespace TestTask.Level
                 shootPosition = _mainCam.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, _targetlessAimDistance));
             }
             Player.OrderShoot(shootPosition, shootTarget);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            PropagateInput(eventData);
         }
     }
 }

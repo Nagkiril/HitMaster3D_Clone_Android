@@ -12,7 +12,7 @@ namespace TestTask.Characters.Interactive
         private static BulletPool _instance;
 
 
-        void Awake()
+        private void Awake()
         {
             if (_instance == null)
             {
