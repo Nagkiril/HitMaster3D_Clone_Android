@@ -1,21 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TestTask.Characters;
 
-namespace TestTask.Level
+namespace TestTask.UI.Modules
 {
-    public class ShootController : MonoBehaviour, IPointerDownHandler
+    public class ShootInputHandler : MonoBehaviour, IPointerDownHandler, IModularInputHandler
     {
         [SerializeField] private float _maxProjectionDistance;
         [SerializeField] private float _targetlessAimDistance;
         private const string TARGET_LAYER_NAME = "Targetable";
         private LayerMask _targetLayerMask;
-
         private Camera _mainCam;
 
-        private void Awake()
+        public event Action<Vector3, Transform> onShootInput;
+
+        public void Initialize()
         {
             _mainCam = Camera.main;
             _targetLayerMask = LayerMask.GetMask(TARGET_LAYER_NAME);
@@ -37,7 +39,7 @@ namespace TestTask.Level
             {
                 shootPosition = _mainCam.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, _targetlessAimDistance));
             }
-            Player.OrderShoot(shootPosition, shootTarget);
+            onShootInput?.Invoke(shootPosition, shootTarget);
         }
 
         public void OnPointerDown(PointerEventData eventData)

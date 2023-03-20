@@ -19,7 +19,7 @@ namespace TestTask.Level
             if (_instance == null)
             {
                 _instance = this;
-                StartLevelUI.onScreenTapped += OnTappedStart;
+                InputManager.onStartInput += OnTappedStart;
                 Player.onPlayerDied += OnPlayerDeath;
             }
             else
@@ -31,7 +31,7 @@ namespace TestTask.Level
 
         private void OnDestroy()
         {
-            StartLevelUI.onScreenTapped -= OnTappedStart;
+            InputManager.onStartInput -= OnTappedStart;
         }
 
         private void OnTappedStart()

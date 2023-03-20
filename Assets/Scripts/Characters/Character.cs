@@ -36,6 +36,11 @@ namespace TestTask.Characters
 
         }
 
+        protected virtual void OnDestroy()
+        {
+
+        }
+
         protected virtual void OnCharacterTouch(Character other)
         {
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TestTask.UI;
 using TestTask.Level;
 using TestTask.Characters.Interactive;
 using UnityEngine;
@@ -21,11 +22,18 @@ namespace TestTask.Characters
             {
                 _instance = this;
                 base.Awake();
+                InputManager.onShootInput += Shoot;
             } else
             {
                 Debug.LogWarning("There should be only 1 Player on the scene! Destroying another one.");
                 Destroy(gameObject);
             }
+        }
+
+        override protected void OnDestroy()
+        {
+            base.OnDestroy();
+            InputManager.onShootInput -= Shoot;
         }
 
         public override void Die()
