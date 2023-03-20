@@ -5,9 +5,9 @@ using TestTask.Characters.Components;
 
 namespace TestTask.Characters
 {
-    public class Enemy : Character
+    public sealed class Enemy : Character
     {
-        [SerializeField] private CharacterInteractor[] _hurtboxes;
+        [SerializeField] private CharacterHurtbox[] _hurtboxes;
 
 
         protected override void Awake()

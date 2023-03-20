@@ -44,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 412856709911813457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &619104563787653805
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4319686449848139384}
   - component: {fileID: 1313449309634063589}
   - component: {fileID: 340689627028129400}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 3292679967156497779}
   - component: {fileID: 7979201211662088675}
   - component: {fileID: 6230751535884795851}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1122106860851313360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &8402311341001578172
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1171927474271514791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &3369273329630516447
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 1735714300062295761}
   - component: {fileID: 5475761465357663623}
   - component: {fileID: 5917806366273323250}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 9094763755305060658}
   - component: {fileID: 5747133042098352016}
   - component: {fileID: 2154030180645354078}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3773796398775244430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &3168151069364274432
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4256184329006876980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &1937658761825914041
@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 8281184178543387988}
   - component: {fileID: 4620783989910510747}
   - component: {fileID: 8419139897627962636}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +830,7 @@ GameObject:
   - component: {fileID: 4819789010862102515}
   - component: {fileID: 4819789010862102514}
   - component: {fileID: 4819789010862102517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,11 +948,11 @@ MonoBehaviour:
   _interactor: {fileID: 4819789010862102514}
   _health: {fileID: 4819789010605183999}
   _hurtboxes:
-  - {fileID: 8120724108702114079}
   - {fileID: 178684160469653894}
   - {fileID: 56968497449390205}
   - {fileID: 3686282554205735939}
   - {fileID: 5056853862118237440}
+  - {fileID: 8120724108702114079}
   - {fileID: 7942372617997910911}
   - {fileID: 1867477876994761884}
   - {fileID: 4971702236197032332}
@@ -1004,7 +1004,7 @@ GameObject:
   - component: {fileID: 7034607144948594708}
   - component: {fileID: 1751869079808144868}
   - component: {fileID: 7852855869718491677}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4898373815902828459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &7487822279166146635
@@ -1176,7 +1176,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4970940942247159355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &8667377124871425319
@@ -1253,7 +1253,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5363633436071858596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &1532958738041784137
@@ -1297,7 +1297,7 @@ GameObject:
   - component: {fileID: 3309872122742386341}
   - component: {fileID: 5012358457591476245}
   - component: {fileID: 3614628599088471913}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6288713822943934245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &2562568079042778073
@@ -1437,7 +1437,7 @@ GameObject:
   - component: {fileID: 7061786570143835762}
   - component: {fileID: 1602330712145073224}
   - component: {fileID: 4467368794067263075}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1500,7 +1500,7 @@ GameObject:
   - component: {fileID: 5508456771209899514}
   - component: {fileID: 4580496930588227123}
   - component: {fileID: 6451922425738187765}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1596,7 +1596,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8901473848204671311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058821bdbe23a774bb0903e14c67db8a, type: 3}
+  m_Script: {fileID: 11500000, guid: a30447fc24cb18b4e879b0bfa5efe871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &1128396574715765231
@@ -1640,7 +1640,7 @@ GameObject:
   - component: {fileID: 7704543454270586538}
   - component: {fileID: 5914873014606166634}
   - component: {fileID: 1515970815822978505}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: EnemyTargetArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

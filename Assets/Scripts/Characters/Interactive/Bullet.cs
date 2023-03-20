@@ -51,7 +51,7 @@ namespace TestTask.Characters.Interactive
             var otherRigidbody = other.attachedRigidbody;
             if (otherRigidbody != null)
             {
-                var otherHurtbox = otherRigidbody.GetComponent<CharacterInteractor>();
+                var otherHurtbox = otherRigidbody.GetComponent<CharacterHurtbox>();
                 if (otherHurtbox != null && otherHurtbox.owner is Enemy otherEnemy)
                 {
                     otherEnemy.TakeDamage(_bulletDamage, transform.forward * _bulletStoppingPower, otherHurtbox.transform);

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <maxHealth>k__BackingField: 10
-  _barUI: {fileID: 0}
+  <currentHealth>k__BackingField: 0
 --- !u!1 &5050088949358681992
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5050088950033574612}
   - component: {fileID: 5050088950033574613}
   - component: {fileID: 5050088950033574610}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

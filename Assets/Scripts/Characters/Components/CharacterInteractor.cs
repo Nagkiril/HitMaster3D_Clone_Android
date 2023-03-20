@@ -6,21 +6,16 @@ using TestTask.Level;
 
 namespace TestTask.Characters.Components
 {
-    public class CharacterInteractor : MonoBehaviour
+    public class CharacterInteractor : CharacterCollider
     {
-        public Character owner { get; private set; }
-
         public event Action<Character> onCharacterTouched;
         public event Action<Waypoint> onWaypointTouched;
-
-        public void Initialize(Character owner)
-        {
-            this.owner = owner;
-        }
 
         private void OnTriggerEnter(Collider other)
         {
             var otherRigidbody = other.attachedRigidbody;
+            //At the moment there are no Characters that listen to both callbacks, meaning there's a point in separating this class out to avoid excessive GetComponent calls
+            //I decided to leave them in, because they allow us to easily scale any Character behaviour, while the price of a couple GetComponents on rare collisions feels negligible
             if (otherRigidbody != null)
             {
                 var otherInteractor = otherRigidbody.GetComponent<CharacterInteractor>();
@@ -28,17 +23,13 @@ namespace TestTask.Characters.Components
                 {
                     onCharacterTouched?.Invoke(otherInteractor.owner);
                 }
+                //We're checking for waypoints this way, because it is possible we may need different reach distances for different actions in the future
                 var otherWaypoint = otherRigidbody.GetComponent<Waypoint>();
                 if (otherWaypoint != null)
                 {
                     onWaypointTouched?.Invoke(otherWaypoint);
                 }
             }
-        }
-
-        public void Disable()
-        {
-            gameObject.SetActive(false);
         }
     }
 }

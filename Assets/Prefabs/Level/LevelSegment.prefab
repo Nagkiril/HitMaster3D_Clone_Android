@@ -44,7 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8912656925387384374}
   - component: {fileID: 4466160733280293286}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EntryZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

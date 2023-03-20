@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace TestTask.Characters
 {
-    public class Player : Character
+    public sealed class Player : Character
     {
         [SerializeField] private Transform _bulletStartPosition;
         private static Player _instance;
