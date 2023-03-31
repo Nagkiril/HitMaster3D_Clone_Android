@@ -1,24 +1,10 @@
-# SquareDino_TestTask
+# HitMaster3D_Clone_Android
 
-Привет, спасибо за тестовое! Было прикольно его делать, ещё осталось много идей для прототипа, но оставил всё строго по срокам и ТЗ (с дополнительными заданиями, офк) + чутка полиша :)
+Small project that contains some basic mechanics, replicating those from Hit Master 3D, such as:
+- Bullet system featuring Object Pooling.
+- Tap-to-shoot mechanic that produces both on-screen input accuracy and ability to shoot freely (while maintaining 3D camera).
+- Simplistic ragdolls.
+- Some basic UI animations.
+- Health system with healthbar display for enemies.
 
-По часам примерно так:
-
-Основные задачи:
-- Просмотр и анализ референса: **1ч**
-- Базовая настройка сцены, проектирование, основная реализация архитектуры: **2ч**
-- Имплементация флоу уровня: **2ч**
-- Имплементация персонажей: **2ч**
-- Контроль стрельбы: **2ч**
-- Механика полёта пулей и урона: **1ч**
-- Отладка, мелкие настройки: **1ч**
-
-Доп задачи:
-- ХП бар и жизни: **1ч** (в целом уже с их расчётом делалось всё сначала)
-- Рагдоллы: **2ч** (помог мой старый опыт с рэгдоллами, но они очень простенькие - в рефе сделано круче)
-
-Суммарно на всё: **14ч**
-
-Надеюсь, ещё свяжемся!
-
-Я в телеге - https://t.me/KirillNagin
+Overall I deem this project of satisfactory code quality. Should update the repo when it's no longer the case. Some things might be unnecessary in real deal as it's a hyper casual project, but at least it goes to show most good practices I'm aware of at the moment.
